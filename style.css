@@ -1,0 +1,284 @@
+/* fonts */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Space+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css?family=VT323&display=swap');
+@font-face {
+ font-family: OuterSpace;
+ src: url(Outer\ Space.ttf);
+}
+@font-face {
+ font-family: Delirium;
+ src: url(FTY\ DELIRIUM\ NCV.ttf);
+}
+@font-face {
+ font-family: Casanova;
+ src: url(Casanova\ Scotia.otf);
+}
+
+/* animations */
+@keyframes fadeIn{
+ from {
+     opacity:0;
+ }
+ to {
+     opacity:1;
+ }
+}
+
+html {
+ scroll-behavior: smooth;
+}
+
+* {
+   /* deletes margins of browser */
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+body {
+   background-color: #351D57;
+   color: #fff;
+}
+
+h1 {
+ font-family: Casanova;
+ animation: fadeIn 2s;
+}
+
+.banneranimation1 {
+ /* next 3 lines make text invisible at first, then after a delay, appear */
+ opacity: 0;
+ animation: fadeIn 1s;
+ animation-delay: 1s;
+ animation-fill-mode: forwards;
+}
+
+.banneranimation2 {
+ opacity: 0;
+ animation: fadeIn 1s;
+ animation-delay: 1.5s;
+ animation-fill-mode: forwards; /* this line allows last frame of animation to stay at 100% opacity instead of 0% */
+ font-size: 20px;
+ color: rgba(255, 255, 255, 0.7);
+}
+
+h2, h3 {
+ text-align: center;
+}
+
+h2, h3, ul, p {
+ font-family: 'Space Mono', monospace;
+}
+
+nav {
+   align-items: center;
+   padding: .5rem 3.75rem;
+   background-color:#351D57;
+   /* make header fixed on top of page*/
+   position: fixed;
+   top: 0;
+   width: 100%;
+   transition: top 0.3s;
+}
+
+nav ul {
+   display: flex;
+   justify-content:center;
+}
+
+nav li {
+   /* trying to make header centered */
+   display: inline;
+   align-items: center;
+   padding-right: 3rem;
+   padding-left: 3rem;
+   font-family: 'Space Mono', monospace;
+}
+
+nav a {
+   /* makes the links white instead of blue*/
+   color: #fff;
+   text-decoration: none;
+}
+
+#banner {
+   /* next 2 lines avoid content overlay of banner over fixed nav bar */
+   height: 400px;
+   margin-top: 40px;
+   font-family: 'Space Mono', monospace;
+   background: url("https://images.unsplash.com/photo-1417577097439-425fb7dec05e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3289&q=80") center center no-repeat;
+   /* the next 4 lines creates the parallax effect */
+   background-attachment: fixed;
+   background-size: cover;
+   background-position: center;
+   background-repeat: no-repeat;
+   padding: 60px;
+   text-align: center;
+   color: white;
+   font-size: 30px;
+   position: relative;
+ }
+
+ #banner:before { /* Purple Overlay */
+   position: absolute;
+   content: "";
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(102, 51, 153, 0.5);
+ }
+
+ #banner * {
+   position: relative; /* Makes child elements of #banner to display above purple overlay. that way text is white, not tinted purple */
+ }
+
+ .center {
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+   width: 50%;
+ }
+
+.introduction {
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
+ padding: 15px 30px 15px 30px;
+ /* top right bottom left */
+}
+
+.introduction .headshot:before { /* Purple Overlay */
+ position: absolute;
+ content: "";
+ width: 250px;
+ height: 250px;
+ background-color: rgba(102, 51, 153, 0.2);
+ }
+
+ /* rectangle is made as a div, not an image */
+.rectangle {
+ position: absolute;
+ top: 77%;
+ left: 3%;
+ z-index: -1;
+ height: 250px;
+ width: 250px;
+ background-image:linear-gradient(rgba(255,0,0,0), rgba(81, 99, 185, 1));
+ }
+
+.introduction .greetings {
+ padding: 15px 30px 15px 30px;
+}
+
+.projects {
+ display: block;
+ flex-direction: row;
+ justify-content: center;
+ padding: 30px 0px;
+}
+
+.project1 {
+ background-color: #3b2c6c;
+}
+
+.project3 {
+ background-color: #3b2c6c;
+}
+
+/* image gallery made with grid */
+.image-grid {
+ display: grid;
+ width: 100%;
+ grid-template-columns: 1fr 1fr 1fr;
+ grid-template-rows: 300px 300px 300px;
+ grid-template-areas:
+  "a b b"
+  "c c d"
+  "e f f";
+  padding: 2.5% 2.5%;
+  grid-column-gap: 5%;
+  grid-row-gap: 5%;
+}
+
+/* text styling. cannot use .image-grid p*/
+.poster1txt, .poster2txt, .poster3txt {
+  text-align: center;
+ color: white;
+}
+
+.poster1 img, .poster2 img, .poster3 img {
+/* next line will have top of image cover entire grid */
+  background-size: cover;
+  /* next line will have center of image covercenter of grid */
+  background-position: center;
+/* next line is that image will not repeat of grid is bigger than image */
+  background-repeat: no-repeat; 
+/* next line keeps width with aspect ratio and of the grid */
+  width: 100%;
+}
+
+.poster1 {
+/* need to link grid-template-areas to grid-template, like a legend in a map */
+  grid-area: a;
+}
+
+.poster1txt {
+  grid-area: b;
+}
+
+.poster2txt {
+  grid-area: c;
+}
+
+.poster2 {
+  grid-area: d;
+}
+
+.poster3 {
+  grid-area: e;
+}
+
+.poster3txt {
+  grid-area: f;
+}
+
+/* image gallery made by flexbox
+ .row {
+   display: flex;
+   justify-content: space-around;
+   padding: 5px 20px 5px 20px;
+ }
+
+.column {
+ width: 400px;
+}
+/* insufficient to just have width: 400px in column
+need to have column img */
+/* .column img {
+ width: 100%;
+} */ */
+
+/* contact */
+.contact {
+ height: 150px;
+ background: url(https://images.unsplash.com/photo-1435224668334-0f82ec57b605?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3150&q=80)  center center no-repeat;
+ /* the next 4 lines creates the parallax effect */
+ background-size: cover;
+ background-attachment: fixed;
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+ position: relative;
+}
+
+.contact-btn {
+ display: flex;
+ justify-content: center;
+}
+
+.contact-btn a {
+ margin: 1px 10px 20px 10px;
+}
+
