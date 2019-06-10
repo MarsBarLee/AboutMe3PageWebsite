@@ -4,15 +4,15 @@
 @import url('https://fonts.googleapis.com/css?family=VT323&display=swap');
 @font-face {
  font-family: OuterSpace;
- src: url(Outer\ Space.ttf);
+ src: url(styles/Outer\ Space.ttf);
 }
 @font-face {
  font-family: Delirium;
- src: url(FTY\ DELIRIUM\ NCV.ttf);
+ src: url(styles/FTY\ DELIRIUM\ NCV.ttf);
 }
 @font-face {
  font-family: Casanova;
- src: url(Casanova\ Scotia.otf);
+ src: url(styles/Casanova\ Scotia.otf);
 }
 
 /* animations */
@@ -45,6 +45,11 @@ h1 {
  font-family: Casanova;
  animation: fadeIn 2s;
 }
+ 
+ h2, h3, h4, ul, p {
+  font-family: 'Space Mono', monospace;
+  text-align: center;
+ }
 
 .banneranimation1 {
  /* next 3 lines make text invisible at first, then after a delay, appear */
@@ -63,14 +68,6 @@ h1 {
  color: rgba(255, 255, 255, 0.7);
 }
 
-h2, h3 {
- text-align: center;
-}
-
-h2, h3, ul, p {
- font-family: 'Space Mono', monospace;
-}
-
 nav {
    align-items: center;
    padding: .5rem 3.75rem;
@@ -79,6 +76,7 @@ nav {
    position: fixed;
    top: 0;
    width: 100%;
+   /* attempt to make smooth drop down transition: top 0.3s; */
    transition: top 0.3s;
 }
 
@@ -96,10 +94,22 @@ nav li {
    font-family: 'Space Mono', monospace;
 }
 
+nav a:hover {
+   /* makes the links differet color when hover*/
+   color: rgb(166, 177, 233);
+  /* makes the link smoothly transition colors when hovered*/
+   transition: color 0.3s linear;
+}
+
 nav a {
-   /* makes the links white instead of blue*/
-   color: #fff;
-   text-decoration: none;
+  /* makes the links white instead of blue*/
+  color: #fff;
+  text-decoration: none;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
 }
 
 #banner {
@@ -107,7 +117,7 @@ nav a {
    height: 400px;
    margin-top: 40px;
    font-family: 'Space Mono', monospace;
-   background: url("https://images.unsplash.com/photo-1417577097439-425fb7dec05e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3289&q=80") center center no-repeat;
+   background: url("images/galaxy.jpg") center center no-repeat;
    /* the next 4 lines creates the parallax effect */
    background-attachment: fixed;
    background-size: cover;
@@ -172,7 +182,13 @@ nav a {
  padding: 15px 30px 15px 30px;
 }
 
-.projects {
+.resume {
+  padding: 2.5% 2.5%;
+  background-color: #3b2c6c;
+}
+
+/* this section is for when I have coding projects to show
+ .projects {
  display: block;
  flex-direction: row;
  justify-content: center;
@@ -185,6 +201,12 @@ nav a {
 
 .project3 {
  background-color: #3b2c6c;
+} */
+
+.gallery {
+  margin: 40px 5% 5%;
+  /* top left+right bottm margin */
+
 }
 
 /* image gallery made with grid */
@@ -192,7 +214,7 @@ nav a {
  display: grid;
  width: 100%;
  grid-template-columns: 1fr 1fr 1fr;
- grid-template-rows: 300px 300px 300px;
+ grid-template-rows: auto auto auto;
  grid-template-areas:
   "a b b"
   "c c d"
@@ -200,6 +222,7 @@ nav a {
   padding: 2.5% 2.5%;
   grid-column-gap: 5%;
   grid-row-gap: 5%;
+  overflow: hidden;
 }
 
 /* text styling. cannot use .image-grid p*/
@@ -222,6 +245,7 @@ nav a {
 .poster1 {
 /* need to link grid-template-areas to grid-template, like a legend in a map */
   grid-area: a;
+  background-color: #3b2c6c;
 }
 
 .poster1txt {
@@ -244,7 +268,7 @@ nav a {
   grid-area: f;
 }
 
-/* image gallery made by flexbox
+/* image gallery previously made by flexbox, image gallery now made by grid
  .row {
    display: flex;
    justify-content: space-around;
@@ -258,19 +282,32 @@ nav a {
 need to have column img */
 /* .column img {
  width: 100%;
-} */ */
+} */
+
+.video {
+  padding: 2.5% 2.5%;
+}
+
+video {
+  /* both lines are needed, display block and margin 0 auto centers */
+  /* auto: The browser sets the margin. The result of this is dependent of the browser
+  thus margin:0 auto specifies
+  * top and bottom margins are 0
+  * right and left margins are auto */
+  display: block;
+  margin: 0 auto;
+}
 
 /* contact */
 .contact {
  height: 150px;
- background: url(https://images.unsplash.com/photo-1435224668334-0f82ec57b605?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3150&q=80)  center center no-repeat;
- /* the next 4 lines creates the parallax effect */
+ /* may change design to parallax effect
+ background: url("images/stars2.jpg")  center center no-repeat;
  background-size: cover;
  background-attachment: fixed;
  background-position: center;
  background-repeat: no-repeat;
- background-size: cover;
- position: relative;
+ position: relative; */
 }
 
 .contact-btn {
